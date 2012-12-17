@@ -1,0 +1,231 @@
+html, body {
+	background-color: #222;
+	color: #eee;
+    padding: 0;
+    margin: 0;
+    font: normal 9.25pt 'Segoe UI', Helvetica, Arial, sans-serif;
+}
+
+.button {
+	text-decoration: none;
+	cursor: default;
+	float: right;
+	padding: 20px 30px;
+	margin-top: -60px;
+	color: #fff;
+}
+
+.button.search {
+	margin-right: 100px;
+}
+
+.button:hover {
+	background-color: #444;
+}
+
+#header {
+	background-color: #333;
+	cursor: default;
+	clear: both;
+}
+
+#caption {
+	margin: 0;
+	padding: 15px;
+	width: 300px;
+	font-family: 'Segoe UI';
+	font-size: 22px;
+	font-weight: 400;
+	color: #fff;
+}
+
+#caption .pre {
+	color: #ace;
+	font-weight: 200;
+}
+
+#about {
+	position: absolute;
+	width: 350px;
+	height: 310px;
+	background-color: #555;
+	overflow: hidden;
+	display: none;
+	box-shadow:0 0 4px 4px #888;
+}
+
+#about .head {
+	padding: 10px;
+	background-color: #444;
+	font-size: 1.1em;
+}
+
+#about .head .name {
+	/* font-weight: 600; /* semi-bold */
+}
+
+#about .body {
+	padding: 8px;
+	position: relative;
+	height: 250px;
+}
+
+#about .body p {
+	text-align: justify;
+}
+
+#about .body a {
+	text-decoration: none;
+	color: #ace;
+}
+
+#about .body .build {
+	font-style: italic;
+	color: #aaa;
+}
+
+#about .body .close {
+	cursor: default;
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	width: 100px;
+	padding: 10px;
+	text-align: center;
+	background-color: transparent;
+}
+
+#about .body .close:hover {
+	background-color: #666;
+}
+
+#about table td:first-child {
+	text-align: right;
+	padding: 0 5px;
+}
+
+#content {
+}
+
+#search {
+	height: 25px;
+	background: #fff;
+    border-bottom: 1px solid #333;
+	display: none;
+}
+
+#search input {
+	font-family: 'Segoe UI';
+	font-size: 1em;
+	border: none;
+	padding: 3px;
+	width: 99%;
+}
+input:-moz-placeholder { color:#aaa; font-style: italic; }
+
+/* ########################### */
+
+#folders {
+    float:left;
+    width:300px;
+    padding:0;
+    border-right: 1px solid #333;
+	background-color: #444;
+	color: #fff;
+    height: 400px;
+    overflow: auto;
+}
+
+.folder {
+	cursor: default;
+	position: relative;
+	margin: 0;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    height: 25px;
+    line-height: 25px;
+	padding: 0 40px 0 15px;
+	background-repeat: no-repeat;
+	background-position:3px 2px;
+	background-image: url(arrow.png);
+}
+
+.folder:hover {
+	background-color: #555;
+}
+
+.folder.active {
+    background-position:3px -22px;
+}
+
+.folder.selected {
+    background-color:#68a;
+}
+
+.folder .count {
+	position: absolute;
+	right: 10px;
+	color: #ccc; 
+}
+
+ul li a.subfolders {  }
+
+
+.L1 .folder { padding-left: 30px; background-position:17px 2px; }
+.L2 .folder { padding-left: 45px; background-position:32px 2px; }
+.L3 .folder { padding-left: 60px; background-position:47px 2px; }
+.L4 .folder { padding-left: 75px; background-position:62px 2px; }
+.L5 .folder { padding-left: 90px; background-position:77px 2px; }
+
+.L1 .folder.active { background-position:17px -22px; }
+.L2 .folder.active { background-position:32px -22px; }
+.L3 .folder.active { background-position:47px -22px; }
+.L4 .folder.active { background-position:62px -22px; }
+.L5 .folder.active { background-position:77px -22px; }
+
+.folder.empty { background-image:none; }
+
+#bookmarks {
+    margin-left:300px;
+    height: 400px;
+	padding:0;
+	background:#fff;
+    overflow: auto;
+}
+
+ul {
+	list-style-type: none;
+	padding: 0;
+	margin: 0;
+}
+
+li {
+    height: 25px;
+	cursor: default;
+	margin: 0;
+	padding: 0 10px;
+	color: #444;
+}
+
+li:nth-child(odd) { 
+	background-color: #f6f6ff;
+}
+
+.bookmark > div {
+    line-height: 25px;
+	float: left;
+	width: 50%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.bookmark .uri a {
+	text-decoration: none;
+	font-style: italic;
+	color: #888;
+}
+
+.bookmark:hover {
+	background-color: #e2e8f6;
+}

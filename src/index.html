@@ -1,0 +1,80 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <title>JSON Bookmarks Viewer</title>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+	<meta name="author" content="Christian Woltering" />
+	<meta name="keywords" content="JSON Bookmarks Viewer, Mozilla Firefox" />
+	<meta name="description" content="View bookmarks exported from Mozilla Firefox." />
+
+	<link type="text/css" rel="stylesheet" href="bookmarks.css" media="screen" />
+
+	<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+
+    <script type="text/javascript" src="bookmarks.js"></script>
+</head>
+<body>
+<div id="header">
+    <h1 id="caption">
+		<span class="pre">JSON</span> Bookmarks Viewer
+    </h1>
+	<a href="#" class="button search">SEARCH</a>
+	<a href="#" class="button about">ABOUT</a>
+</div>
+
+<div id="content">
+	<div id="folders">
+	</div>
+	<div id="bookmarks">
+		<div id="search">
+			<input type="text" placeholder="Search all bookmarks ..." />
+		</div>
+	</div>
+</div>
+
+<div id="about">
+    <div class="head">
+		About <span class="name">JSON Bookmarks Viewer</span>
+    </div>
+    <div class="body">
+		<p><strong>JSON Bookmark Viewer</strong> lets you view bookmark files created with
+		<a href="http://support.mozilla.org/en-US/kb/restore-bookmarks-from-backup-or-move-them">Mozilla Firefox</a>.
+		Just drop a JSON file onto this browser window and you can navigate through your bookmarks in an easy way.</p>
+
+		<table>
+			<tr>
+				<td>Author:</td>
+				<td>Christian Woltering</td>
+			</tr>
+			<tr>
+				<td>Version:</td>
+				<td><span class="version">0.1</span> <span class="build">(2012-12-17)</span></td>
+			</tr>
+			<tr>
+				<td>Homepage:</td>
+				<td><a href="http://wo80.hostingsociety.com/p/bookmarks/">JSON Bookmarks Viewer</a></td>
+			</tr>
+			<tr>
+				<td>Sources:</td>
+				<td><a href="https://github.com/wo80/bookmarks">Github</a></td>
+			</tr>
+		</table>
+
+		<div class="close">CLOSE</div>
+	</div>
+</div>
+
+<script type="text/javascript">
+<!--
+
+$(document).ready(function() {
+	app.init();
+});
+
+// -->
+</script>
+
+</body>
+</html>
