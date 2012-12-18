@@ -46,7 +46,7 @@ html, body {
 
 #about {
 	position: absolute;
-	width: 350px;
+	width: 345px;
 	height: 310px;
 	background-color: #555;
 	overflow: hidden;
@@ -104,6 +104,19 @@ html, body {
 	padding: 0 5px;
 }
 
+#error {
+	position: absolute;
+	width: 300px;
+	bottom: 30px;
+	right: 10px;
+	padding: 20px;
+	overflow: hidden;
+	display: none;
+	background-color: rgba(180,130,120,0.9);
+	box-shadow: 3px 3px 3px #765;
+	color: #fff;
+}
+
 #content {
 }
 
@@ -121,6 +134,7 @@ html, body {
 	padding: 3px;
 	width: 99%;
 }
+
 input:-moz-placeholder { color:#aaa; font-style: italic; }
 
 /* ########################### */

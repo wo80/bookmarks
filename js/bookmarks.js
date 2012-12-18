@@ -1,5 +1,4 @@
 // JSON Bookmark Viewer
-// Version: 0.1 (2012-12-17)
 
 var app = (function () {
 	"use strict";
@@ -135,7 +134,7 @@ var app = (function () {
 
 	var handleClick = function(el) {
 		/// <summary>
-		/// Handle click on the bookmarks folder to open or close the subtree.
+		/// Handle click on a bookmarks folder to open or close the subtree.
 		/// </summary>
 		/// <param type="DOM element" name="el">Clicked tree node.</param>
 		var folder, items, path = getPathUp(el);
@@ -146,6 +145,10 @@ var app = (function () {
 			// A subtree exists, so close folder
 			items = getBookmarks(folder);
 			displayBookmarks(items);
+
+			// TODO: instead of removing elements from the DOM on folder close
+			// and re-add on opening a second time, one could just hide the
+			// subtree and then check if it already exists and show again...
 
 			el.next().remove();
 			el.removeClass('active');
@@ -286,30 +289,31 @@ var app = (function () {
 		/// </summary>
 		var children, i, n, sub, el, b;
 
-		if (db.id == 1) {
-			children = db.children;
-			n = children.length;
-
-			for (i = 0; i < n; i += 1) {
-				b = children[i];
-				sub = countSubFolders(b);
-
-				el = $('<div class="folder">' + b.title + '</div>');
-				el.data('id', b.id);
-				el.data('parent', b.parent);
-				el.data('count', sub);
-
-				if (sub > 0) {
-					el.append('<span class="count">' + sub + '</span>');
-				}
-
-				folders.append(el);
-			}
-
+		// Check Firefox bookmarks format
+		if (!(db.id == 1 && db.root)) {
+			showError("Error: somethings wrong with the JSON file.");
 			return;
 		}
 
-		alert("Error: wrong JSON format");
+		children = db.children;
+		n = children.length;
+
+		for (i = 0; i < n; i += 1) {
+			b = children[i];
+			sub = countSubFolders(b);
+
+			el = $('<div class="folder">' + b.title + '</div>');
+			el.data('id', b.id);
+			el.data('parent', b.parent);
+			el.data('count', sub);
+
+			if (sub > 0) {
+				el.append('<span class="count">' + sub + '</span>');
+			}
+
+			folders.append(el);
+		}
+
 	};
 
 	var loadBookmarksCallback = function(json) {
@@ -334,7 +338,7 @@ var app = (function () {
 		$.getJSON(url, function(json) {
 			loadBookmarksCallback(json);
 		}).error(function() {
-			alert("Error loading json.");
+			showError("Error loading JSON from url.");
 		});
 	};
 
@@ -349,7 +353,7 @@ var app = (function () {
 			try {
 				loadBookmarksCallback(JSON.parse(this.result));
 			} catch(ex) {
-				alert("Error loading local json file.");
+				showError("Error loading local JSON file.");
 			}
 		};
 
@@ -362,7 +366,7 @@ var app = (function () {
 		if (file.name.substr(file.name.lastIndexOf('.') + 1) == 'json') {
 			reader.readAsText(file);
 		} else {
-			alert("Error loading file (only JSON supported).");
+			showError("Error loading file (only JSON supported).");
 		}
 	};
 
@@ -391,6 +395,14 @@ var app = (function () {
 		}
 	};
 
+	var showError = function(message) {
+		if (message) {
+			var el = $('#error');
+			el.text(message);
+			el.show();
+		}
+	};
+
 	var resize = function() {
 		var h = $(document).height() - $('#header').height() - 20;
 
@@ -398,7 +410,7 @@ var app = (function () {
 		bookmarks.height(h);
     };
 
-	var init = function() {
+	var init = function(url) {
 
 		folders = $('#folders');
 		bookmarks = $('#bookmarks');
@@ -440,6 +452,11 @@ var app = (function () {
 			}
 		});
 
+		// Close any error message on click
+		$('body').click(function(e) {
+			$('#error').hide('fast');
+		});
+
 		// Enable dropping JSON mesh files
 		if (window.File && window.FileReader) {
 			// File API supported
@@ -448,8 +465,9 @@ var app = (function () {
 			});
 		}
 
-		// Load example bookmarks file
-		loadBookmarksAjax("bookmarks.json");
+		if (url) { // Load bookmarks file
+			loadBookmarksAjax(url);
+		}
 	};
 
 	return {
