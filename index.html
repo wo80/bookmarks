@@ -1,81 +1,53 @@
-<!DOCTYPE HTML>
+<!doctype html>
 <html lang="en">
 <head>
-    <title>JSON Bookmarks Viewer</title>
+	<title>JSON Bookmarks Viewer</title>
 
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta charset="utf-8">
 
 	<meta name="author" content="Christian Woltering" />
 	<meta name="keywords" content="JSON Bookmarks Viewer, Mozilla Firefox" />
 	<meta name="description" content="View bookmarks exported from Mozilla Firefox." />
 
 	<link type="text/css" rel="stylesheet" href="css/bookmarks.css" media="screen" />
+	<link type="text/css" rel="stylesheet" href="css/jquery.jscrollpane.css" media="screen" />
 
-	<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+	<script type="text/javascript" src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
+	<script type="text/javascript" src="vendor/jquery.mousewheel.min.js"></script>
+	<script type="text/javascript" src="vendor/jquery.jscrollpane.min.js"></script>
+	<!-- <script type="text/javascript" src="vendor/jquery.highlight.min.js"></script> -->
 
-    <script type="text/javascript" src="js/bookmarks.js"></script>
+	<script type="text/javascript" src="js/DropTarget.js"></script>
+	<script type="text/javascript" src="js/MozBookmarks.js"></script>
+	<script type="text/javascript" src="js/WebKitBookmarks.js"></script>
+	<script type="text/javascript" src="js/bookmarks.js"></script>
 </head>
 <body>
-<div id="header">
-    <h1 id="caption">
-		<span class="pre">JSON</span> Bookmarks Viewer
-    </h1>
-	<a href="#" class="button search">SEARCH</a>
-	<a href="#" class="button about">ABOUT</a>
-</div>
-
-<div id="content">
-	<div id="folders">
-	</div>
-	<div id="bookmarks">
-		<div id="search">
-			<input type="text" placeholder="Search all bookmarks ..." />
+	<div id="sidebar">
+		<h1 id="caption"><span class="lighter">JSON</span> Bookmarks</h1>
+		<div class="scroll-container">
+			<div id="folders"></div>
 		</div>
 	</div>
-</div>
-
-<div id="about">
-    <div class="head">
-		About <span class="name">JSON Bookmarks Viewer</span>
-    </div>
-    <div class="body">
-		<p><strong>JSON Bookmark Viewer</strong> lets you view bookmark files created with
-		<a href="http://support.mozilla.org/en-US/kb/restore-bookmarks-from-backup-or-move-them">Mozilla Firefox</a>.
-		Just drop a JSON file onto this browser window and you will be able to navigate and search your bookmarks
-		in an easy way.</p>
-
-		<table>
-			<tr>
-				<td>Author:</td>
-				<td>Christian Woltering</td>
-			</tr>
-			<tr>
-				<td>Version:</td>
-				<td><span class="version">0.1</span> <span class="build">(2012-12-18)</span></td>
-			</tr>
-			<tr>
-				<td>Homepage:</td>
-				<td><a href="http://wo80.hostingsociety.com/p/bookmarks/">JSON Bookmarks Viewer</a></td>
-			</tr>
-			<tr>
-				<td>Sources:</td>
-				<td><a href="https://github.com/wo80/bookmarks">Github</a></td>
-			</tr>
-		</table>
-
-		<div class="close">CLOSE</div>
+	<div id="header">
+		<div id="toolbar">
+			<input class="search" type="text" placeholder="Search all bookmarks" />
+		</div>
+		<ul id="path">
+			<li class="item">&nbsp;</li>
+		</ul>
+		<hr />
 	</div>
-</div>
+	<div class="listview">
+	</div>
 
-<div id="error">
-Some error message ...
-</div>
+	<div id="error"></div>
 
 <script type="text/javascript">
 <!--
 
 $(document).ready(function() {
-	app.init('data/bookmarks.json');
+	app.init();
 });
 
 // -->
