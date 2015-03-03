@@ -1,9 +1,20 @@
 html, body {
-	background-color: #222;
-	color: #eee;
-    padding: 0;
-    margin: 0;
-    font: normal 9.25pt 'Segoe UI', Helvetica, Arial, sans-serif;
+	background-color: white;
+	color: #222;
+	font: normal 9.25pt 'Segoe UI', Helvetica, Arial, sans-serif;
+	padding: 0;
+	margin: 0;
+	width: 100%;
+	height: 100%;
+	min-height: 500px;
+	overflow: hidden;
+}
+
+.highlight {
+	color: white;
+	background-color: #68f;
+	border-radius: 2px;
+	padding: 0 2px;
 }
 
 .button {
@@ -23,87 +34,6 @@ html, body {
 	background-color: #444;
 }
 
-#header {
-	background-color: #333;
-	cursor: default;
-	clear: both;
-}
-
-#caption {
-	margin: 0;
-	padding: 15px;
-	width: 300px;
-	font-family: 'Segoe UI';
-	font-size: 22px;
-	font-weight: 400;
-	color: #fff;
-}
-
-#caption .pre {
-	color: #ace;
-	font-weight: 200;
-}
-
-#about {
-	position: absolute;
-	width: 345px;
-	height: 310px;
-	background-color: #555;
-	overflow: hidden;
-	display: none;
-	box-shadow:0 0 4px 4px #888;
-}
-
-#about .head {
-	padding: 10px;
-	background-color: #444;
-	font-size: 1.1em;
-}
-
-#about .head .name {
-	/* font-weight: 600; /* semi-bold */
-}
-
-#about .body {
-	padding: 8px;
-	position: relative;
-	height: 250px;
-}
-
-#about .body p {
-	text-align: justify;
-}
-
-#about .body a {
-	text-decoration: none;
-	color: #ace;
-}
-
-#about .body .build {
-	font-style: italic;
-	color: #aaa;
-}
-
-#about .body .close {
-	cursor: default;
-	position: absolute;
-	bottom: 0;
-	right: 0;
-	width: 100px;
-	padding: 10px;
-	text-align: center;
-	background-color: transparent;
-}
-
-#about .body .close:hover {
-	background-color: #666;
-}
-
-#about table td:first-child {
-	text-align: right;
-	padding: 0 5px;
-}
-
 #error {
 	position: absolute;
 	width: 300px;
@@ -117,51 +47,56 @@ html, body {
 	color: #fff;
 }
 
-#content {
-}
+/* Sidebar */
 
-#search {
-	height: 25px;
-	background: #fff;
-    border-bottom: 1px solid #333;
-	display: none;
-}
-
-#search input {
-	font-family: 'Segoe UI';
-	font-size: 1em;
-	border: none;
-	padding: 3px;
-	width: 99%;
-}
-
-input:-moz-placeholder { color:#aaa; font-style: italic; }
-
-/* ########################### */
-
-#folders {
-    float:left;
-    width:300px;
-    padding:0;
-    border-right: 1px solid #333;
+#sidebar {
+	position: absolute;
+	top: 0px;
+	bottom: 0px;
+	width: 300px;
+	border-right: 1px solid #333;
 	background-color: #444;
 	color: #fff;
-    height: 400px;
-    overflow: auto;
+}
+
+h1 {
+	position: absolute;
+	top: 0px;
+	margin: 0;
+	padding: 15px;
+	font-family: 'Segoe UI';
+	font-size: 22px;
+	font-weight: 400;
+	color: #fff;
+}
+
+h1 .lighter {
+	color: #ace;
+	font: lighter 22px "Segoe UI Light",Segoe UI,Tahoma Light,Arial Light,Helvetica,sans-serif;
+}
+
+.scroll-container {
+	position: absolute;
+	top: 75px;
+	bottom: 5px;
+	width: 300px;
+}
+
+#folders {
 }
 
 .folder {
 	cursor: default;
 	position: relative;
 	margin: 0;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    height: 25px;
-    line-height: 25px;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	height: 25px;
+	line-height: 25px;
 	padding: 0 40px 0 15px;
 	background-repeat: no-repeat;
-	background-position:3px 2px;
-	background-image: url(arrow.png);
+	background-position: 3px 2px;
+	background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAuCAYAAAAV+ligAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAOwAAADsABataJCQAAABl0RVh0U29mdHdhcmUAUGFpbnQuTkVUIHYzLjUuOUA8sMsAAABFSURBVDhPY2AYBSgh8O/fvwi8QQJSgFcRTAFORcgKsCoi2gScDiXoi9FYHw0B6oQAemrGmnixKcKwnmCyB+kYTdkURBsABZVqQRb99hgAAAAASUVORK5CYII=");
 }
 
 .folder:hover {
@@ -169,21 +104,25 @@ input:-moz-placeholder { color:#aaa; font-style: italic; }
 }
 
 .folder.active {
-    background-position:3px -22px;
+	background-position:3px -22px;
 }
 
 .folder.selected {
-    background-color:#68a;
+	background-color:#68a;
 }
 
 .folder .count {
 	position: absolute;
 	right: 10px;
-	color: #ccc; 
+	color: #777;
+	padding: 0 5px;
+	line-height: 25px;
+	text-align: right;
 }
 
-ul li a.subfolders {  }
-
+.folder.selected .count {
+	color: #ccc;
+}
 
 .L1 .folder { padding-left: 30px; background-position:17px 2px; }
 .L2 .folder { padding-left: 45px; background-position:32px 2px; }
@@ -199,39 +138,107 @@ ul li a.subfolders {  }
 
 .folder.empty { background-image:none; }
 
-#bookmarks {
-    margin-left:300px;
-    height: 400px;
-	padding:0;
-	background:#fff;
-    overflow: auto;
+/* Bookmarks */
+
+#header {
+	position: absolute;
+	top: 0;
+	left: 301px;
+	right: 0;
+	padding: 0;
 }
 
-ul {
+#toolbar {
+}
+
+#toolbar .search {
+	font: normal 1em 'Segoe UI', Helvetica, Arial, sans-serif;
+	border: 1px solid #aaa;
+	border-radius: 2px;
+	/*border-radius: 4px 0 0 4px;*/
+	padding: 5px;
+	padding-left: 25px;
+	display:block;
+	width: 80%;
+	margin: 10px auto;
+	background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAARCAYAAADUryzEAAABC0lEQVQ4EdWRsU5CQRBFFzQkFHZWNmKwJtoQLShsDAWJf+gnWNgZSCyMmlASYmMMBaKlBjsJ6rnP2WUeeQUNBZOcnZ07M5vZ3RA23koFN6ijncKe5d7wj/Bicc4tH3BGtmUVv+ZjzR3xrWnJbaVdCAfsOzCHG7iCe/gC5Wowhk9I5g9oo+5CF/qgg4Su8A2HUIUhJCun3eLOuQLLRy2+S2rzB/yY6rVYWKRlOZ/QqLLjf5dbo/aeUwn8G3wQH8G+6VO87nwC+hn9xjVITybRW5PgHPxkPt8jePCCn0D6BJ6hAsrNYARPoMnqIG0MmS1PEPUi30C8APVcwiuEbS0r2sDqdvBZ84p9ay77AwILKTOI12mTAAAAAElFTkSuQmCC") no-repeat 6px 4px;
+}
+
+::-moz-placeholder { color:#aaa; font-style: italic; }
+
+#header hr {
+	margin: 10px auto;
+	border: none;
+	border-bottom: 1px solid #dedede;
+	width: 90%;
+}
+
+#path {
+	display: inline;
+	list-style-type: none;
+	margin: 10px;
+	padding: 0;
+}
+
+#path .item {
+	border: solid white;
+	border-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAaCAYAAABozQZiAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAOwAAADsABataJCQAAABh0RVh0U29mdHdhcmUAcGFpbnQubmV0IDQuMC41ZYUyZQAAANRJREFUOE+dzq0RwkAYhOEIBAKJQCApIQJBKQgkfSApAXEqJpkoCrgSkEgkJSAQx+5MMnOXrNhBPAN577ufKqX0NxldMrpkdMnoktElo0tGl4wuGalt2xPs1NpIxq7rakjwxgEHNUMyEjYe4YPNX/5XM7OQ6/t+z9uBr7hM14sPBQdssfE1HHDL14pBBRvOw9P5gjpfKwZzMcYFbwLe+OALpjPFx6hpmjVui9yI3zus1NwsEIY38IQrX6BmSEYKISxVz8noktElo0tGl4wuGV0yelL1A3EUfUovudH1AAAAAElFTkSuQmCC") 1 1 1 15 fill;
+	border-width: 1px 1px 1px 15px;
+	cursor: default;
+	display: inline-block;
+	height: 24px;
+	line-height: 24px;
+	padding: 0 7px 0 5px;
+}
+
+#path .item:first-child {
+	border-width: 1px 0;
+	padding-left: 0;
+}
+
+h2.caption {
+	font-family: 'Segoe UI', Helvetica, Arial, sans-serif;
+	font-size: 1.2em;
+	font-weight: 600;
+	padding: 5px 0 15px 10px;
+}
+
+.listview {
+	position: absolute;
+	left: 301px;
+	right: 0;
+	top: 100px;
+	bottom: 0;
+	padding: 0;
+	overflow-x: hidden;
+	overflow-y: auto;
+}
+
+.listview ul {
 	list-style-type: none;
 	padding: 0;
 	margin: 0;
 }
 
-li {
-    height: 25px;
+.listview li {
+	height: 25px;
 	cursor: default;
 	margin: 0;
 	padding: 0 10px;
 	color: #444;
 }
 
-li:nth-child(odd) { 
+.listview li:nth-child(odd) { 
 	background-color: #f6f6ff;
 }
 
 .bookmark > div {
-    line-height: 25px;
+	line-height: 25px;
 	float: left;
 	width: 50%;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
 }
 
 .bookmark .uri a {
@@ -240,6 +247,6 @@ li:nth-child(odd) {
 	color: #888;
 }
 
-.bookmark:hover {
+.listview li:hover {
 	background-color: #e2e8f6;
 }
