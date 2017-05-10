@@ -125,7 +125,7 @@
 		/// <summary>
 		/// Display all folders of the tree root.
 		/// </summary>
-		var i, n, el, folder, items;
+		var i, n, el, folder, items, count;
 
 		// Check Firefox bookmarks format
 		if (MozBookmarks.validate(json)) {
@@ -146,8 +146,14 @@
 			el = $('<div class="folder">' + folder.title + '</div>');
 			el.data('path', folder.path);
 
-			if (folder.count > 0) {
-				el.append('<span class="count">' + folder.count + '</span>');
+			count = folder.count;
+
+			if (count.bookmarks > 0) {
+				el.append('<span class="count">' + count.bookmarks + '</span>');
+			}
+			
+			if (count.folders === 0) {
+				el.addClass('empty');
 			}
 
 			folders.append(el);

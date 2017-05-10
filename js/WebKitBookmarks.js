@@ -6,12 +6,13 @@
 	//
 	// [0]	roots.bookmark_bar
 	// [1]	roots.custom_root.userRoot
+	// [2]	roots.other
 	//
 	// Ignore:
-	// [2]	roots.custom_root.shared
-	// [3]	roots.custom_root.unsorted
-	// [4]	roots.other
+	// [3]	roots.custom_root.shared
+	// [4]	roots.custom_root.unsorted
 	// [5]	roots.synced
+	// [6]	roots.trash
 	//
 	// Ignore: roots.custom_root.userRoot._reading_list_
 
@@ -23,6 +24,8 @@
 			o = data.roots.bookmark_bar;
 		} else if (path[0] === 1) {
 			o = data.roots.custom_root.userRoot;
+		} else if (path[0] === 2) {
+			o = data.roots.other;
 		} else {
 			throw new Error("Invalid path: unsupported root mapping");
 		}
@@ -82,9 +85,17 @@
 				sub.push({ title: o.name, path: [0], count: this.countItems(o) });
 			}
 
-			o = roots.custom_root.userRoot;
+			/* No longer used in latest Chrome versions? */
+			if (roots.custom_root) {
+				o = roots.custom_root.userRoot
+				if (o) {
+					sub.push({ title: o.name, path: [1], count: this.countItems(o) });
+				}
+			}
+
+			o = roots.other;
 			if (o) {
-				sub.push({ title: o.name, path: [1], count: this.countItems(o) });
+				sub.push({ title: o.name, path: [2], count: this.countItems(o) });
 			}
 
 			return sub;
