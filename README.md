@@ -5,7 +5,7 @@ View JSON formatted bookmarks in your browser. Just drag and drop the bookmarks 
 
 View [demo](http://wo80.github.com/bookmarks/).
 
-## Supported booksmark format
+## Supported bookmarks format
 
 ### Firefox
 
