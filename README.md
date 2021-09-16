@@ -3,7 +3,7 @@ JSON Bookmarks Viewer
 
 View JSON formatted bookmarks in your browser. Just drag and drop the bookmarks file onto your browser window (javascript has to be enabled).
 
-View [demo](http://wo80.github.com/bookmarks/).
+View [demo](http://wo80.github.io/bookmarks/).
 
 ## Supported bookmarks format
 
