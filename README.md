@@ -3,13 +3,13 @@ JSON Bookmarks Viewer
 
 View JSON formatted bookmarks in your browser. Just drag and drop the bookmarks file onto your browser window (javascript has to be enabled).
 
-View [demo](http://wo80.github.io/bookmarks/).
+View [demo](https://wo80.github.io/bookmarks/).
 
 ## Supported bookmarks format
 
 ### Firefox
 
-Open the bookmarks manager (_Ctrl+Shift+B_), select _Import and Backup_ > _Backup ..._ and save the JSON file to the location you selected.
+Open the bookmarks manager (_Ctrl+Shift+O_), select _Import and Backup_ > _Backup ..._ and save the JSON file to the selected location.
 
 ### Chromium
 
